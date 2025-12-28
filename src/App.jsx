@@ -867,6 +867,7 @@ export default function PLUManagerEnterprise() {
               type="text"
               value={customerEditForm.name}
               onChange={(e) => setCustomerEditForm({ ...customerEditForm, name: e.target.value })}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
                 padding: '12px',
@@ -886,6 +887,7 @@ export default function PLUManagerEnterprise() {
               type="email"
               value={customerEditForm.email}
               onChange={(e) => setCustomerEditForm({ ...customerEditForm, email: e.target.value })}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
                 padding: '12px',
@@ -905,6 +907,7 @@ export default function PLUManagerEnterprise() {
               type="text"
               value={customerEditForm.company}
               onChange={(e) => setCustomerEditForm({ ...customerEditForm, company: e.target.value })}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
                 padding: '12px',
@@ -924,6 +927,7 @@ export default function PLUManagerEnterprise() {
               type="text"
               value={customerEditForm.address}
               onChange={(e) => setCustomerEditForm({ ...customerEditForm, address: e.target.value })}
+              onClick={(e) => e.stopPropagation()}
               placeholder="Straße, PLZ Ort"
               style={{
                 width: '100%',
@@ -944,6 +948,7 @@ export default function PLUManagerEnterprise() {
               type="password"
               value={customerEditForm.password}
               onChange={(e) => setCustomerEditForm({ ...customerEditForm, password: e.target.value })}
+              onClick={(e) => e.stopPropagation()}
               placeholder="Leer lassen, um Passwort nicht zu ändern"
               style={{
                 width: '100%',
