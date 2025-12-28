@@ -811,7 +811,7 @@ export default function PLUManagerEnterprise() {
   };
 
   // Customer Edit Modal
-  const CustomerEditModal = () => {
+  const CustomerEditModal = React.memo(() => {
     if (!editingCustomer) return null;
 
     return (
@@ -828,15 +828,17 @@ export default function PLUManagerEnterprise() {
         zIndex: 1000,
         padding: '20px'
       }}>
-        <div style={{
-          background: 'white',
-          borderRadius: '12px',
-          padding: '32px',
-          maxWidth: '600px',
-          width: '100%',
-          maxHeight: '90vh',
-          overflow: 'auto'
-        }}>
+        <div 
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            background: 'white',
+            borderRadius: '12px',
+            padding: '32px',
+            maxWidth: '600px',
+            width: '100%',
+            maxHeight: '90vh',
+            overflow: 'auto'
+          }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -865,8 +867,9 @@ export default function PLUManagerEnterprise() {
             </label>
             <input
               type="text"
-              value={customerEditForm.name}
-              onChange={(e) => setCustomerEditForm({ ...customerEditForm, name: e.target.value })}
+              key="customer-name-input"
+              value={customerEditForm.name || ''}
+              onChange={(e) => setCustomerEditForm(prev => ({ ...prev, name: e.target.value }))}
               onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
@@ -885,8 +888,9 @@ export default function PLUManagerEnterprise() {
             </label>
             <input
               type="email"
-              value={customerEditForm.email}
-              onChange={(e) => setCustomerEditForm({ ...customerEditForm, email: e.target.value })}
+              key="customer-email-input"
+              value={customerEditForm.email || ''}
+              onChange={(e) => setCustomerEditForm(prev => ({ ...prev, email: e.target.value }))}
               onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
@@ -905,8 +909,9 @@ export default function PLUManagerEnterprise() {
             </label>
             <input
               type="text"
-              value={customerEditForm.company}
-              onChange={(e) => setCustomerEditForm({ ...customerEditForm, company: e.target.value })}
+              key="customer-company-input"
+              value={customerEditForm.company || ''}
+              onChange={(e) => setCustomerEditForm(prev => ({ ...prev, company: e.target.value }))}
               onClick={(e) => e.stopPropagation()}
               style={{
                 width: '100%',
@@ -925,8 +930,9 @@ export default function PLUManagerEnterprise() {
             </label>
             <input
               type="text"
-              value={customerEditForm.address}
-              onChange={(e) => setCustomerEditForm({ ...customerEditForm, address: e.target.value })}
+              key="customer-address-input"
+              value={customerEditForm.address || ''}
+              onChange={(e) => setCustomerEditForm(prev => ({ ...prev, address: e.target.value }))}
               onClick={(e) => e.stopPropagation()}
               placeholder="Straße, PLZ Ort"
               style={{
@@ -946,8 +952,9 @@ export default function PLUManagerEnterprise() {
             </label>
             <input
               type="password"
-              value={customerEditForm.password}
-              onChange={(e) => setCustomerEditForm({ ...customerEditForm, password: e.target.value })}
+              key="customer-password-input"
+              value={customerEditForm.password || ''}
+              onChange={(e) => setCustomerEditForm(prev => ({ ...prev, password: e.target.value }))}
               onClick={(e) => e.stopPropagation()}
               placeholder="Leer lassen, um Passwort nicht zu ändern"
               style={{
@@ -1019,7 +1026,7 @@ export default function PLUManagerEnterprise() {
         </div>
       </div>
     );
-  };
+  });
 
   // Registration View
   if (registrationView) {
